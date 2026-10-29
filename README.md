@@ -59,6 +59,8 @@ The NACA 0012 at Re = 6 × 10⁶ is a standard validation case of the NASA Turbu
 
 y⁺ stays between 0.25 and 0.82 over the whole airfoil: the viscous sublayer is resolved.
 
+*y⁺ and Cp plots are from the preliminary run (26k-cell mesh with the same near-wall inflation settings).*
+
 ---
 
 ## 5. Numerical Setup
@@ -102,6 +104,9 @@ At α = 0°, about 75 % of the drag comes from skin friction, as expected for a 
 - **Higher incidence not validated.** At α = 10°, the refined mesh predicts a lift coefficient about 10 % below the reference with a strongly overestimated pressure drag, the signature of a non-physical suction-side separation. The cause is not yet identified; the polar is therefore limited to α ≤ 5°.
 - **Drag at α = 5°.** The pressure-drag share grows with lift; candidate causes are the far-field distance (20c with velocity boundary conditions constraining the circulation) and the unstructured mesh resolution.
 - **Trailing edge.** The sharp trailing edge produces a few degenerate inflation cells at the tip (minimum orthogonal quality ~10⁻⁴). Their effect on the forces is negligible at α = 0°; a blunt trailing edge (standard NACA definition) would remove them.
+
+![Inflation layers converging at the sharp trailing edge](images/04_mesh_trailing_edge.png)
+
 - **Next steps:** structured C-mesh, larger far-field (≥ 100c) or pressure-far-field conditions, mesh-convergence study, full polar up to stall.
 
 ---
@@ -111,7 +116,6 @@ At α = 0°, about 75 % of the drag comes from skin friction, as expected for a 
 ```
 ├── README.md
 ├── images/     Geometry, mesh, y+, pressure coefficient
-├── data/       Fluent XY exports (Cp, y+), if available
 └── scripts/    naca0012_points.py, naca0012_domain.py — SpaceClaim point-curve generators
 ```
 
